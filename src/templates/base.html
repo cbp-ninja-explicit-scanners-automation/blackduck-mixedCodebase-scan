@@ -1,0 +1,22 @@
+{{ define "base" }}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/counter.js"></script>
+        <link rel="stylesheet" href="/css/output.css"/>
+        <title>Coffee store</title>
+    </head>
+    <body class="bg-gray-100 flex flex-col min-h-screen">
+        <h1 class="flex justify-center text-gray-400 text-3xl uppercase p-10 font-bold">Coffee Shop</h1>
+        <header>
+            <nav>
+                <div class="flex justify-evenly text-gray-500 text-2xl px-14">
+                    <span><a href="/">Home</a></span>
+                    <!-- &lt;&gt; -->
+                    <span><a href="about">About</a></span>
+                    <span><a href="product">Add Product</a></span>
+                </div>
+            </nav>
+        </header>
+{{ end }}

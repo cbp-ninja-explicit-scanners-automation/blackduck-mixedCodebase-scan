@@ -1,0 +1,56 @@
+{{ template "base" . }}
+<div>
+    <br>
+</div>
+<div class="flex justify-center">
+  <form
+    action="/product"
+    method="post"
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div class="mb-4">
+      <label class="formLabel" for="productName">Name:</label>
+      <input
+        class="formInput"
+        type="text"
+        id="productName"
+        name="productName"
+        placeholder="Cappucino"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="formLabel" for="productDesc">Description:</label>
+      <input
+        class="formInput"
+        type="text"
+        id="productDesc"
+        name="productDesc"
+        placeholder="foamy coffee"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="formLabel" for="productPrice">Price:</label>
+      <input
+        class="formInput"
+        type="number"
+        id="productPrice"
+        name="productPrice"
+        placeholder="20"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="formLabel" for="productSKU">Unique SKU:</label>
+      <input
+        class="formInput"
+        type="text"
+        id="productSKU"
+        name="productSKU"
+        placeholder="abc90"
+      />
+    </div>
+    <div>
+    <input class="btn" type="submit" name="AddProduct" value="Add Product" />
+    </div>
+  </form>
+</div>
+{{ template "footer" .}}

@@ -1,0 +1,82 @@
+{{ template "base" . }}
+<div class="m-6 pb-1">
+  {{ range . }}
+  <div class="card bg-white rounded-lg overflow-hidden shadow-md mt-4">
+    <div class="grid grid-cols-2 pl-14 mt-4">
+      <div>
+        <h2 class="text-gray-600 text-2xl">{{ .Name }}</h2>
+        <img class="m-1 w-20" src="{{ .ImagePath }}" />
+      </div>
+      <div class="text-xl m-3 p-1">
+        <span class="flex justify-end"> {{ .Description }}</span>
+        <div class="flex justify-end">${{ .Price }}</div>
+        <div class="flex justify-end">
+          <div class="flex justify-end">
+            <form class="max-w-xs mx-auto">
+              <div>
+                <button 
+                  type="button" onclick="counterDecrement('{{ .SKU }}')"
+                  id="decrement-button"
+                  data-input-counter-decrement="counter-input"
+                  class="flex-shrink-0 bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                >
+                  <svg
+                    class="w-2.5 h-2.5 text-gray-900 dark:text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 18 2"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M1 1h16"
+                    />
+                  </svg>
+                </button>
+                <input 
+                  type="text"
+                  id="{{ .SKU }}"
+                  data-input-counter
+                  class="flex-shrink-0 text-gray-900 dark:text-black border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center"
+                  placeholder="0"
+                  required
+                />
+                <button  onclick="counterIncrement('{{ .SKU }}')"
+                  type="button"
+                  id="increment-button"
+                  data-input-counter-increment="counter-input"
+                  class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                >
+                  <svg
+                    class="w-2.5 h-2.5 text-gray-200"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 1v16M1 9h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<div class="flex justify-end pl-14 m-6">
+  <button class="btn bg-gray-200">BUY</button>
+</div>
+{{ template "footer" . }}
