@@ -2,7 +2,12 @@ Fake Coffee shop website
 
 Has Go server in the Backend with Tailwind CSS and html to handle the Frontend 
 
+Docker 
 
-In local :
-https://github.com/amitramachandran/zero1/assets/25405858/46378ea4-8566-4d27-93f3-a815fcf56965
+To build the docker image 
+`docker build --tag coffee-store .`
 
+To run and publish the docker image to localhost
+`docker run -p 9090:9090 coffee-store`
+
+Try checking the server running on localhost at 9090 port

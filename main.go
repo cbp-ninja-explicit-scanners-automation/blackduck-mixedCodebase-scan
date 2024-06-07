@@ -2,12 +2,14 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
-	"main/zero1/handlers"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
+
+	"github.com/amitramachandran/zero1/handlers"
 
 	"github.com/gorilla/mux"
 )
@@ -15,29 +17,33 @@ import (
 func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
 
-	// hello := handlers.NewHelloHandler(l)
+	serverCheck := handlers.NewHealthHandler(l)
 	product := handlers.NewProduct(l)
 
 	// sm := http.NewServeMux()
 	sm := mux.NewRouter()
 
+	workingDir, _ := os.Getwd()
 	//file server to handle static images
-	staticImagePath := "/Users/ext.amit.r/Documents/projectZero/zero1/src/images/"
+	staticImagePath := fmt.Sprintf(workingDir + "/src/images/")
 	imgFS := http.FileServer(http.Dir(staticImagePath))
 	sm.PathPrefix("/images/").Handler(http.StripPrefix("/images/", imgFS))
 
 	//file server to serve the CSS file
-	staticCSSPath := "/Users/ext.amit.r/Documents/projectZero/zero1/src/css/"
+
+	staticCSSPath := fmt.Sprintf(workingDir + "/src/css/")
 	cssFS := http.FileServer(http.Dir(staticCSSPath))
 	sm.PathPrefix("/css/").Handler(http.StripPrefix("/css/", cssFS))
 
 	//file server to serve the js file
-	staticJSPath := "/Users/ext.amit.r/Documents/projectZero/zero1/src/js/"
+
+	staticJSPath := fmt.Sprintf(workingDir + "/src/js/")
 	jsFS := http.FileServer(http.Dir(staticJSPath))
 	sm.PathPrefix("/js/").Handler(http.StripPrefix("/js/", jsFS))
 
 	// get method routers
 	getRouter := sm.Methods(http.MethodGet).Subrouter()
+	getRouter.HandleFunc("/health", serverCheck.HealthCheck)
 	// getRouter.HandleFunc("/", product.GetProducts)
 	getRouter.HandleFunc("/", product.GetTemplProducts)
 	getRouter.HandleFunc("/{id:[0-9]+}", product.GetTemplProduct)
@@ -55,11 +61,8 @@ func main() {
 	putRouter.HandleFunc("/product/{id:[0-9]+}", product.UpdateProduct)
 	putRouter.Use(product.ProductMiddleware)
 
-	// sm.HandleFunc("/", product.ServeHTTP)
-	// sm.HandleFunc("/describe", hello.DescribeFunc)
-
 	serve := http.Server{
-		Addr:        "localhost:9090",
+		Addr:        "0.0.0.0:9090",
 		Handler:     sm,
 		IdleTimeout: 30 * time.Second,
 	}

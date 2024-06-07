@@ -3,9 +3,10 @@ package handlers
 import (
 	"context"
 	"log"
-	"main/zero1/data"
 	"net/http"
 	"strconv"
+
+	"github.com/amitramachandran/zero1/data"
 
 	"github.com/gorilla/mux"
 )

@@ -3,15 +3,18 @@ package handlers
 import (
 	"fmt"
 	"html/template"
-	"main/zero1/data"
 	"net/http"
+	"os"
 	"strconv"
+
+	"github.com/amitramachandran/zero1/data"
 
 	"github.com/gorilla/mux"
 )
 
+var workingDir, _ = os.Getwd()
 var (
-	BasePath   = "/Users/ext.amit.r/Documents/projectZero/zero1/src/templates"
+	BasePath   = fmt.Sprintf(workingDir + "/src/templates")
 	Base       = fmt.Sprintf("%s/base.html", BasePath)
 	Index      = fmt.Sprintf("%s/index.html", BasePath)
 	Footer     = fmt.Sprintf("%s/footer.html", BasePath)
