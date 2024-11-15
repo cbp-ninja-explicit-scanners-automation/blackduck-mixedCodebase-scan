@@ -1,0 +1,22 @@
+name: gitleaks-hybrid-plugin
+kind: workflow
+apiVersion: automation.cloudbees.io/v1alpha1
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: write
+
+jobs:
+  gitleaks-hybrid-scan:
+    steps:        
+      - name: checkout Source Code
+        uses: cloudbees-io/checkout@v1
+
+      - name: gitleaks hybrid plugin scan
+        uses: cloudbees-io/gitleaks-plugin-private@v1
