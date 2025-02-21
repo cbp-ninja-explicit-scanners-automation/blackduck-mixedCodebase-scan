@@ -19,4 +19,4 @@ jobs:
         uses: cloudbees-io/checkout@v1
 
       - name: gitleaks hybrid plugin scan
-        uses: cloudbees-io/gitleaks-plugin-private@v1
+        uses: cloudbees-io/gitleaks-plugin-private@v1 
