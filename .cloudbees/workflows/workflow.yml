@@ -1,6 +1,6 @@
-name: gitleaks-hybrid-plugin
-kind: workflow
 apiVersion: automation.cloudbees.io/v1alpha1
+name: Gitleaks Scanner
+kind: workflow
 
 on:
   push:
@@ -14,9 +14,15 @@ permissions:
 
 jobs:
   gitleaks-hybrid-scan:
-    steps:        
+    steps: 
+
+      - uses: docker://golang:1.20.3-alpine3.17
+        name: Say hello smoke test
+        shell: sh
+        run: |
+          echo "hello world!"
+          ls -la
+
       - name: checkout Source Code
         uses: cloudbees-io/checkout@v1
 
-      - name: gitleaks hybrid plugin scan
-        uses: cloudbees-io/gitleaks-plugin-private@v1 
