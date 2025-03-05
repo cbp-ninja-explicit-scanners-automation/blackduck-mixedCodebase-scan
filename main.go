@@ -36,6 +36,7 @@ func main() {
 	sm.PathPrefix("/css/").Handler(http.StripPrefix("/css/", cssFS))
 
 	//file server to serve the js file
+	// Using key ASIAY34FZKBOKMUTVV7P
 
 	staticJSPath := fmt.Sprintf(workingDir + "/src/js/")
 	jsFS := http.FileServer(http.Dir(staticJSPath))
