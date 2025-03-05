@@ -26,3 +26,7 @@ jobs:
       - name: checkout Source Code
         uses: cloudbees-io/checkout@v1
 
+      - name: Scan with Gitleaks
+        uses: https://github.com/cloudbees-io/gitleaks-plugin@v1
+
+
