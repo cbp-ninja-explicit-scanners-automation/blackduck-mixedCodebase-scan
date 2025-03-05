@@ -10,4 +10,4 @@ To build the docker image
 To run and publish the docker image to localhost
 `docker run -p 9090:9090 coffee-store`
 
-Try checking the server running on localhost at 9090 port 
+Try checking the server running on localhost at 9090 port
