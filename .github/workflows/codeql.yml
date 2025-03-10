@@ -53,5 +53,5 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: /home/runner/work/Cafe/results/go.sarif
-        category: "/language:${{matrix.language}}:${{automationDetails.id}}"
+        category: "/language:${{matrix.language}}:codeql"
         
