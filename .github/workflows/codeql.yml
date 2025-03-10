@@ -25,7 +25,7 @@ jobs:
         - language: go
           build-mode: autobuild
         - language: javascript-typescript
-          build-mode: autobuild
+          build-mode: none
       
         # To learn more about changing the languages that are analyzed or customizing the build mode for your analysis,
         # see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/customizing-your-advanced-setup-for-code-scanning.
