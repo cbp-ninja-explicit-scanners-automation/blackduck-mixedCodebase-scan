@@ -10,8 +10,8 @@ jobs:
     
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: ${{ (matrix.language == 'go' && 'macos-latest') || 'ubuntu-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'go' && 120) || 360 }}
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
     permissions:
       # required for all workflows
       security-events: write
@@ -33,19 +33,7 @@ jobs:
         # If you are analyzing a compiled language, you can modify the 'build-mode' for that language to customize how
         # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
-    - name: Install go
-      if: matrix.language == 'go'
-      run: |
-        if ! command -v go &> /dev/null; then
-          echo "Go not found, installing..."
-          wget https://dl.google.com/go/go1.19.3.linux-amd64.tar.gz
-          tar -xvf go1.19.3.linux-amd64.tar.gz
-          sudo mv go /usr/local
-          echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
-          source ~/.bashrc
-        else
-          echo "Go is already installed."
-        fi
+   
     - name: Checkout repository
       uses: actions/checkout@v4
 
@@ -60,3 +48,13 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
+
+    - name: Upload SARIF results to GitHub
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: /home/runner/work/Cafe/results/javascript.sarif
+
+    - name: Upload SARIF results to GitHub
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: /home/runner/work/Cafe/results/go.sarif
