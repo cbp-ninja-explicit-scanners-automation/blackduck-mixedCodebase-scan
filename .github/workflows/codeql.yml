@@ -10,7 +10,7 @@ jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
     runs-on: ${{ (matrix.language == 'go' && 'macos-latest') || 'ubuntu-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    timeout-minutes: ${{ (matrix.language == 'go' && 120) || 360 }}
     permissions:
       # required for all workflows
       security-events: write
