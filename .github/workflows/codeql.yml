@@ -44,10 +44,10 @@ jobs:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
 
-    # - name: Perform CodeQL Analysis
-    #   uses: github/codeql-action/analyze@v3
-    #   with:
-    #     category: "/language:${{ matrix.language }}-${{ github.sha }}"
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{ matrix.language }}-${{ github.sha }}-${{ github.branch }}"
 
     - name: Upload SARIF results to GitHub
       uses: github/codeql-action/upload-sarif@v3
