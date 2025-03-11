@@ -50,7 +50,9 @@ jobs:
         category: "/language:${{ matrix.language }}-${{ github.sha }}-${{ github.branch }}"
 
     - name: check sarif output
-      run: cat /home/runner/work/Cafe/results/go.sarif
+      run: |
+          ls -la /home/runner/work/Cafe/results
+          cat /home/runner/work/Cafe/results/go.sarif
         
 
     # - name: Upload SARIF results to GitHub
