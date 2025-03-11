@@ -49,9 +49,9 @@ jobs:
       with:
         category: "/language:${{ matrix.language }}-${{ github.sha }}-${{ github.branch }}"
 
-    - name: Upload SARIF results to GitHub
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: /home/runner/work/Cafe/results/go.sarif
-        category: "/language:${{ matrix.language }}-${{ github.sha }}"
+    # - name: Upload SARIF results to GitHub
+    #   uses: github/codeql-action/upload-sarif@v3
+    #   with:
+    #     sarif_file: /home/runner/work/Cafe/results/go.sarif
+    #     category: "/language:${{ matrix.language }}-${{ github.sha }}"
         
