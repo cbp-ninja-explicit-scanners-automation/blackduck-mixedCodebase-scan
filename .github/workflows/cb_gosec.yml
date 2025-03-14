@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: 'test'
 
       - name: Gosec cloudbees action
         uses: cloudbees-io/gosec-plugin@v2
@@ -24,4 +22,3 @@ jobs:
             gh_run_id: ${GITHUB_RUN_ID}"
             gh_job_id: ${GITHUB_JOB}"
             gh_step_id: ${GITHUB_STEP_NAME}"
-            ref: 'test'
