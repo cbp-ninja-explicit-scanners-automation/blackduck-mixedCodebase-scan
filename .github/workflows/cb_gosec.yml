@@ -21,4 +21,4 @@ jobs:
             cb_api_url: "https://api.cloudbees.io/"
             gh_run_id: ${GITHUB_RUN_ID}"
             gh_job_id: ${GITHUB_JOB}"
-            gh_step_id: ${GITHUB_STEP_NAME}"
+            gh_step_id: ${GITHUB_STEP_NAME}" 
