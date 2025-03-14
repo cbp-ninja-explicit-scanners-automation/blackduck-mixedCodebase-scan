@@ -23,15 +23,15 @@ jobs:
 
       - name: Add invocation details to SARIF
         run: |
-          invocation_details="gosec -fmt sarif -out gosec-results.sarif ./..."
-          cp gosec-results.sarif gosec-results-backup.sarif
-          jq --arg invocation "$invocation_details" '.runs[0].invocation = { "arguments": $invocation }' gosec-results.sarif > gosec-results-with-invocation.sarif
+          invocation_details="gosec -fmt sarif -out results.sarif ./..."
+          cp results.sarif gosec-results-backup.sarif
+          jq --arg invocation "$invocation_details" '.runs[0].invocation = { "arguments": $invocation }' results.sarif > gosec-results-with-invocation.sarif
 
 
       - name: check sarif output
         run: |
           ls -la /home/runner/work/Cafe
-          cat gosec-results.sarif
+          cat results.sarif
           
       # - name: Upload SARIF file
       #   uses: github/codeql-action/upload-sarif@v3
