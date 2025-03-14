@@ -31,7 +31,7 @@ jobs:
       - name: check sarif output
         run: |
           ls -la /home/runner/work/Cafe
-          cat results.sarif
+          cat gosec-results.sarif
           
       # - name: Upload SARIF file
       #   uses: github/codeql-action/upload-sarif@v3
