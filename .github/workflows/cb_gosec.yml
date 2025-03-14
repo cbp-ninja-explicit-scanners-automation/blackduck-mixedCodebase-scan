@@ -18,7 +18,7 @@ jobs:
         uses: cloudbees-io/gosec-plugin@v2
         with:
             cb_token: "cb_api_nR9WIDmLG2PDCgeEjFFg5G6xPA6h4ofhEaSKX79ENcHIHRaH8EfWgc3Ebj7OTL4JXzBEuSDUwC07TP1+ANwxAw=="
-            cb_api_url: "https://api.saas-preprod.beescloud.com"
+            cb_api_url: "https://api.cloudbees.io/"
             gh_run_id: ${GITHUB_RUN_ID}"
             gh_job_id: ${GITHUB_JOB}"
             gh_step_id: ${GITHUB_STEP_NAME}"
