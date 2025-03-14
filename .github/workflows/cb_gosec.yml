@@ -3,7 +3,7 @@ name: Gosec Scan
 on:
   push:
     branches:
-      - mastery
+      - master
 
 jobs:
   gosec:
