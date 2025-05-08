@@ -13,6 +13,8 @@ permissions:
 jobs:
   blackduck-hybrid-scan:
     steps:
+      - name: checkout Source Code
+        uses: cloudbees-io/checkout@v1
       - name: black duck hybrid plugin scan
         uses: cloudbees-io/blackduck-sca-scan-dependency@apr
         with:
