@@ -1,0 +1,26 @@
+name: blackduck-hybrid-plugin-dockerimagescan
+kind: workflow
+apiVersion: automation.cloudbees.io/v1alpha1
+on:
+  push:
+    branches:
+      - blackduck-hybrid-plugin-test
+  workflow_dispatch:
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: write
+jobs:
+  blackduck-hybrid-scan:
+    steps:
+      - name: black duck hybrid plugin scan
+        uses: cloudbees-io/blackduck-sca-scan-dependency@apr
+        with:
+          server-url: https://blackduck.saas-qa.beescloud.com
+          api-token: ${{ secrets.BD_API_TOKEN }}
+          project-name: blackduck-dockerimage
+          project-version: 0.0.1
+        #   detect-cli-params: --logging.level.detect=DEBUG --blackduck.offline.mode=false
+          detect-cli-params: "--detect.tools=CONTAINER_SCAN --detect.container.scan.file.path=public.ecr.aws/ubuntu/ubuntu:24.04_stable"
+          ref: master
+  
