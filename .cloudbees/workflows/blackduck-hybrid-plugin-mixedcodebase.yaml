@@ -1,4 +1,4 @@
-name: blackduck-hybrid-plugin-mixedcodebase
+name: blackduck-hybrid-plugin
 kind: workflow
 apiVersion: automation.cloudbees.io/v1alpha1
 on:
