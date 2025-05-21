@@ -6,6 +6,8 @@ on:
     branches:
       - blackduck-hybrid-plugin-test
   workflow_dispatch:
+  schedule:
+    - cron: 0 9 * * *
 permissions:
   scm-token-own: read
   scm-token-org: read
@@ -22,7 +24,5 @@ jobs:
           api-token: ${{ secrets.BD_API_TOKEN }}
           project-name: blackduck-mixedCodebase
           project-version: 0.0.1
-        #   detect-cli-params: --logging.level.detect=DEBUG --blackduck.offline.mode=false
           detect-cli-params: --detect.detector.required.accuracy=HIGH
           ref: master
-  
