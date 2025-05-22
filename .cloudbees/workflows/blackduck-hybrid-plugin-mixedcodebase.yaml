@@ -4,10 +4,11 @@ apiVersion: automation.cloudbees.io/v1alpha1
 on:
   push:
     branches:
-      - blackduck-hybrid-plugin-test
+      - master
   workflow_dispatch:
   schedule:
-    - cron: 0 9 * * *
+    - cron: 30 3 * * *
+    - cron: 30 10 * * *
 permissions:
   scm-token-own: read
   scm-token-org: read
@@ -24,5 +25,5 @@ jobs:
           api-token: ${{ secrets.BD_API_TOKEN }}
           project-name: blackduck-mixedCodebase
           project-version: 0.0.1
-          detect-cli-params: --detect.detector.required.accuracy=HIGH
+          detect-cli-params: --logging.level.detect=DEBUG --blackduck.offline.mode=false
           ref: master
