@@ -18,8 +18,10 @@ jobs:
     steps:
       - name: checkout Source Code
         uses: cloudbees-io/checkout@v1
+        with:
+          repository: cbp-automation-ninja/blackduck-mixedCodebase
       - name: black duck hybrid plugin scan
-        uses: cloudbees-io/blackduck-sca-scan-dependency@apr
+        uses: cloudbees-io/blackduck-sca-scan-dependency@v2
         with:
           server-url: https://blackduck.saas-qa.beescloud.com
           api-token: ${{ secrets.BD_API_TOKEN }}
