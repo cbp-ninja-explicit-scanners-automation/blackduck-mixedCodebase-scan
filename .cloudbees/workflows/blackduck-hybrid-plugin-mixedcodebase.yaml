@@ -2,13 +2,9 @@ name: blackduck-hybrid-plugin-mixedcodebase
 kind: workflow
 apiVersion: automation.cloudbees.io/v1alpha1
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
   schedule:
     - cron: 30 3 * * *
-    # - cron: 30 10 * * *
 permissions:
   scm-token-own: read
   scm-token-org: read
@@ -18,14 +14,12 @@ jobs:
     steps:
       - name: checkout Source Code
         uses: cloudbees-io/checkout@v1
-        with:
-          repository: cbp-automation-ninja/blackduck-mixedCodebase
       - name: black duck hybrid plugin scan
         uses: cloudbees-io/blackduck-sca-scan-dependency@v2
         with:
           server-url: https://blackduck.saas-qa.beescloud.com
           api-token: ${{ secrets.BD_API_TOKEN }}
-          project-name: blackduck-mixedCodebase
+          project-name: blackduck-mixedCodebase-scan
           project-version: 0.0.1
           detect-cli-params: --logging.level.detect=DEBUG --blackduck.offline.mode=false
           ref: master
